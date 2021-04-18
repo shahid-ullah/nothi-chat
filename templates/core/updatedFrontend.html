@@ -106,7 +106,7 @@
                                     
                                     <form action="#" class="bg-light " style= "position: absolute;  bottom:4%;width:70%;">
                                         <div class="input-group " >
-                                          <input id="chat-input" type="text" id="chat-input" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 ml-0 bg-light" style="height: 10px;">
+                                          <input  data-emoji-picker="true" id="chat-input" type="text" id="chat-input" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 ml-0 bg-light" style="height: 10px;">
                                           <div class="input-group-append">
                                             <button  id="btn-send" id="btn-send" type="submit" class="btn btn-link" > <i class="fa fa-paper-plane"></i></button>
                                           </div>
@@ -153,6 +153,12 @@
    let currentUserID = '{{ request.user.id }}';
  </script>
  <script src="{% static 'js/app.js' %}"></script>
+  <script src="{% static 'js/emojiPicker.js' %}"></script>
+  <script>
+    (() => {
+      new EmojiPicker()
+    })()
+  </script>
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>

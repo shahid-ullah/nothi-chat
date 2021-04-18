@@ -267,7 +267,7 @@ $(document).ready(function () {
     getMessageById(e.data);
   };
 });
-function onSelectSearchedUser(selctedSearchedUser,selctedSearchedUserID){
+function onSelectSearchedUser(selctedSearchedUser,selctedSearchedUserID,usrName){
   $.post('/api/v1/member/add/', {
     creator: currentUserID,
     friends: selctedSearchedUserID
@@ -275,7 +275,7 @@ function onSelectSearchedUser(selctedSearchedUser,selctedSearchedUserID){
     alert('Error! Check console!');
   });
   
-  setCurrentRecipient(selctedSearchedUser)
+  setCurrentRecipient(selctedSearchedUser,usrName)
   
   $("#user-list").show()
   $("#search-box").hide()
@@ -291,7 +291,8 @@ function drawSearchedUser(user){
       console.log(data)
     for(let i=0;i<=data.length;i++)
     {
-      const searchedUser=`<a href="#" class="list-group-item list-group-item-action update-list" onclick=onSelectSearchedUser('${data[i]["username"]}','${data[i]["id"]}')>${data[i]["username_eng"]}</a>`
+        let user=String(data[i]["username_eng"])
+      const searchedUser=`<a href="#" class="list-group-item list-group-item-action update-list" onclick=onSelectSearchedUser('${data[i]["username"]}','${data[i]["id"]}','${encodeURIComponent(user)}')>${data[i]["username_eng"]}</a>`
       $(searchedUser).appendTo('#search-box');
     }
 
